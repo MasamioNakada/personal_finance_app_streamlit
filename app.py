@@ -1,5 +1,5 @@
 import streamlit as st
-
+from views import landing
 from utils.data_loaders import get_consumer_data
 
 #temp libraries
@@ -13,19 +13,9 @@ st.set_page_config(
     initial_sidebar_state="expanded"
 )
 
-with st.spinner("Cargando datos...",show_time=True):
-    time.sleep(2)
-    consumer_data = get_consumer_data()
+#Configuracion de navegacion
+landing = st.Page("views/landing.py",title="Inicio",icon="🏠")
+user_dashboard = st.Page("views/dashboard/user_dashboard.py",title="Dashboard",icon="📊")
 
-st.title("Finanzas Personales")
-
-with st.sidebar:
-    st.header(f"Hola 👋 {consumer_data['name']}")
-    st.divider()
-
-    st.button("Añadir",icon="➕",use_container_width=True)
-    st.button("Personalizar",icon="✏️",use_container_width=True)
-    st.divider()
-
-    st.button("Preferencias", icon="⚙️",use_container_width=True)
-
+pg = st.navigation([landing,user_dashboard],position="hidden")
+pg.run()

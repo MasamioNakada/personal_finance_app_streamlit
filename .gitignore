@@ -172,3 +172,11 @@ cython_debug/
 
 # PyPI configuration file
 .pypirc
+
+########################################################################
+# Streamlit
+########################################################################
+.streamlit/
+!e2e_playwright/.streamlit/
+lib/streamlit/static
+streamlit-storage
